@@ -8,6 +8,9 @@
 
 #import "CustomCell.h"
 
+#define BTN_SELECT_WIDTH 40
+#define BTN_SELECT_HEIGHT 40
+
 @implementation CustomCell
 
 - (void)awakeFromNib {
@@ -20,13 +23,18 @@
     UIView *backgroundView = [[UIView alloc] initWithFrame:self.contentView.bounds];
     backgroundView.backgroundColor = [UIColor clearColor];
     self.btnSelect = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.btnSelect.frame = CGRectMake( 2, 2, 40, 40);
     self.btnSelect.backgroundColor = [UIColor clearColor];
     [backgroundView addSubview:self.btnSelect];
     [self.btnSelect setBackgroundImage:[UIImage imageNamed:@"ic_checkbox_unchecked"] forState:UIControlStateNormal];
     [self.btnSelect addTarget:self action:@selector(selectAction:) forControlEvents:UIControlEventTouchUpInside];
     self.backgroundView = backgroundView;
     
+}
+
+
+- (void)updateBtnSelectFram
+{
+    self.btnSelect.frame = CGRectMake( 2, (self.frame.size.height - BTN_SELECT_HEIGHT)/2, BTN_SELECT_WIDTH, BTN_SELECT_HEIGHT);
 }
 
 - (IBAction)selectAction:(id)sender {

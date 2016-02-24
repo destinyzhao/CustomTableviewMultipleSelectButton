@@ -21,4 +21,6 @@ typedef void (^CustomSelectBlock)(BOOL selected,NSInteger row);
 
 - (IBAction)selectAction:(id)sender;
 
+- (void)updateBtnSelectFram;
+
 @end
